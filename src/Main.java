@@ -49,6 +49,7 @@ public class Main {
                 break;
             case 4:
                 //transaksi jual
+                // pengurangan stok
                 break;
             case 5:
                 User user = new User("","");
