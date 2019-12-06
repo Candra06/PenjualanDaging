@@ -29,6 +29,15 @@ public class Daging implements InterfaceDaging {
         dftrStok.add("10");
         dftrDateExp.add("2019-12-06");
         dftrStatus.add("Fresh");
+
+        dftrKode.add("DG-2");
+        dftrJenis.add("Sirloin");
+        dftrPemasok.add("PM02");
+        dftrHBeli.add("60000");
+        dftrHJual.add("70000");
+        dftrStok.add("10");
+        dftrDateExp.add("2019-12-08");
+        dftrStatus.add("Fresh");
     }
 
     public void insertData(){
@@ -55,16 +64,16 @@ public class Daging implements InterfaceDaging {
             System.out.print("Masukkan jenis daging ");
             jenis = in.next();
             dftrJenis.add(jenis); // menambah data pada arraylist
-            System.out.print("Masukkan pemasok daging ");
+            System.out.print("Masukkan pemasok daging : ");
             pemasok = in.next();
             dftrPemasok.add(pemasok); // menambah data pada arraylist
-            System.out.print("Masukkan harga beli daging ");
+            System.out.print("Masukkan harga beli daging : ");
             harga_beli = in.nextInt();
             dftrHBeli.add(String.valueOf(harga_beli)); // menambah data pada arraylist
-            System.out.print("Masukkan harga jual daging ");
+            System.out.print("Masukkan harga jual daging : ");
             harga_jual = in.nextInt();
             dftrHJual.add(String.valueOf(harga_jual)); // menambah data pada arraylist
-            System.out.print("Masukkan stok daging ");
+            System.out.print("Masukkan stok daging : ");
             stok = in.nextInt();
             dftrStok.add(String.valueOf(stok)); // menambah data pada arraylist
             System.out.print("Apakah ingin input lagi? y/n ");
@@ -91,6 +100,27 @@ public class Daging implements InterfaceDaging {
             membusuk();
             System.out.println("Status "+dftrStatus.get(i));
             System.out.println("------------------------------");
+        }
+    }
+
+    public void removeDaging(){
+        Scanner sc = new Scanner(System.in);
+        boolean dt = false;
+        String res;
+        showDaging();
+        while(!dt){
+            System.out.println("Masukkan Kode Daging yang ingin dihapus : ");
+            kode = sc.next();
+            boolean data = dftrKode.contains(kode);
+            dftrKode.remove(kode);
+            System.out.print("Apakah ingin menghapus data lagi? y/n ");
+            res = sc.next();
+            if (res.equals("y")){
+                dt = false;
+            }else {
+                dt = true;
+                showDaging();
+            }
         }
     }
 

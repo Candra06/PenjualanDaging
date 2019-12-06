@@ -55,6 +55,7 @@ public class Pemasok extends Person {
     }
 
     public void removePemasok(){
+        System.out.println("========== Hapus Data Pemasok ==========");
         Scanner sc = new Scanner(System.in);
         boolean dt = false;
         String res;

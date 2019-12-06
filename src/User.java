@@ -32,10 +32,10 @@ public class User extends Person{
             System.out.println("Kode User: "+kode);
             dftrKode.add(kode);
             System.out.println("Masukkan nama : ");
-            setNama(sc.nextLine()); // memberi nilai pada atribut di supar class
+            setNama(sc.nextLine()); // memberi nilai pada atribut di super class
             dftrNama.add(getNama()); // menambah data ke arraylist dengan mengambil nilai dari attribut pada super class
             System.out.print("Masukkan no_hp : ");
-            setNo_hp(sc.nextLine()); // memberi nilai pada atribut di supar class
+            setNo_hp(sc.nextLine()); // memberi nilai pada atribut di super class
             dftrNo_hp.add(getNo_hp());
             System.out.print("Masukkan username : ");
             user = sc.nextLine();
@@ -44,6 +44,27 @@ public class User extends Person{
             password = sc.nextLine();
             dftrPassword.add(this.password);
             System.out.print("Apakah ingin input lagi? y/n ");
+            res = sc.next();
+            if (res.equals("y")){
+                dt = false;
+            }else {
+                dt = true;
+                showData();
+            }
+        }
+    }
+
+    public void removeUser(){
+        Scanner sc = new Scanner(System.in);
+        boolean dt = false;
+        String res;
+        showData();
+        while(!dt){
+            System.out.println("Masukkan Kode Daging yang ingin dihapus : ");
+            kode = sc.next();
+            boolean data = dftrKode.contains(kode);
+            dftrKode.remove(kode);
+            System.out.print("Apakah ingin menghapus data lagi? y/n ");
             res = sc.next();
             if (res.equals("y")){
                 dt = false;
