@@ -31,11 +31,11 @@ public class User extends Person{
             kode = "US-"+get;
             System.out.println("Kode User: "+kode);
             dftrKode.add(kode);
-            System.out.print("Masukkan nama : ");
-            setNama(sc.nextLine());
-            dftrNama.add(getNama());
+            System.out.println("Masukkan nama : ");
+            setNama(sc.nextLine()); // memberi nilai pada atribut di supar class
+            dftrNama.add(getNama()); // menambah data ke arraylist dengan mengambil nilai dari attribut pada super class
             System.out.print("Masukkan no_hp : ");
-            setNo_hp(sc.nextLine());
+            setNo_hp(sc.nextLine()); // memberi nilai pada atribut di supar class
             dftrNo_hp.add(getNo_hp());
             System.out.print("Masukkan username : ");
             user = sc.nextLine();

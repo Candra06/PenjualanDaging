@@ -1,13 +1,21 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-public class Daging {
+public class Daging implements InterfaceDaging {
     ArrayList<String> dftrKode = new ArrayList<String>();
     ArrayList<String> dftrJenis = new ArrayList<String>();
     ArrayList<String> dftrPemasok = new ArrayList<String>();
     ArrayList<String> dftrHBeli = new ArrayList<String>();
     ArrayList<String> dftrHJual = new ArrayList<String>();
     ArrayList<String> dftrStok = new ArrayList<String>();
+    ArrayList<String> dftrDateExp = new ArrayList<String>();
+    ArrayList<String> dftrStatus = new ArrayList<String>();
+
+
+    Locale locale = new Locale("fr", "FR");
+    DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
+    String date = dateFormat.format(new Date());
 
     protected String kode, jenis, pemasok;
     protected int harga_jual, harga_beli, stok;
@@ -19,6 +27,8 @@ public class Daging {
         dftrHBeli.add("50000");
         dftrHJual.add("55000");
         dftrStok.add("10");
+        dftrDateExp.add("2019-12-06");
+        dftrStatus.add("Fresh");
     }
 
     public void insertData(){
@@ -27,27 +37,36 @@ public class Daging {
         String res;
         System.out.println("========== Input Data Daging ==========");
         while (!dt){
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = new Date();
+            String tgl = format.format(date);
+            String[] splitDate = tgl.split("/");
+            int dd = Integer.parseInt(splitDate[0])+2;
+            int MM = Integer.parseInt(splitDate[1])-1;
+            int YY = Integer.parseInt(splitDate[2]);
+            dftrDateExp.add(get_tgl(YY,MM,dd)); // menambah data pada arraylist dengan memanggil fungsi get tanggal expired
+            dftrStatus.add("fresh"); // menambah data pada arraylist
             String lstKode = dftrKode.get(dftrKode.size() - 1);
             String[] getLst = lstKode.split("-");
             int get = Integer.parseInt(getLst[1]) + 1;
-            kode = "DG-"+get;
+            kode = "DG-"+get; // generate kode auto increments
             System.out.println("Kode daging "+kode);
-            dftrKode.add(kode);
+            dftrKode.add(kode); // menambah data pada arraylist
             System.out.print("Masukkan jenis daging ");
             jenis = in.next();
-            dftrJenis.add(jenis);
+            dftrJenis.add(jenis); // menambah data pada arraylist
             System.out.print("Masukkan pemasok daging ");
             pemasok = in.next();
-            dftrPemasok.add(pemasok);
+            dftrPemasok.add(pemasok); // menambah data pada arraylist
             System.out.print("Masukkan harga beli daging ");
             harga_beli = in.nextInt();
-            dftrHBeli.add(String.valueOf(harga_beli));
+            dftrHBeli.add(String.valueOf(harga_beli)); // menambah data pada arraylist
             System.out.print("Masukkan harga jual daging ");
             harga_jual = in.nextInt();
-            dftrHJual.add(String.valueOf(harga_jual));
+            dftrHJual.add(String.valueOf(harga_jual)); // menambah data pada arraylist
             System.out.print("Masukkan stok daging ");
             stok = in.nextInt();
-            dftrStok.add(String.valueOf(stok));
+            dftrStok.add(String.valueOf(stok)); // menambah data pada arraylist
             System.out.print("Apakah ingin input lagi? y/n ");
             res = in.next();
             if (res.equals("y")){
@@ -68,9 +87,29 @@ public class Daging {
             System.out.println("Harga Beli "+dftrHBeli.get(i));
             System.out.println("Harga Jual "+dftrHJual.get(i));
             System.out.println("Stok daging "+dftrStok.get(i)+"kg");
+            System.out.println("Tanggal expired "+dftrDateExp.get(i));
+            membusuk();
+            System.out.println("Status "+dftrStatus.get(i));
             System.out.println("------------------------------");
         }
     }
 
+    public String get_tgl(int th, int bl, int tgl){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = new GregorianCalendar(th,bl,tgl,13,24,56);
+        String hasil = sdf.format(calendar.getTime());
+        return hasil;
+    }
 
+    @Override
+    public void membusuk() { // memanggil method dari interface
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String tgl = format.format(date);
+        boolean exp = dftrDateExp.contains(tgl); // mencari data dengan tanggal sekarang
+        if (exp){
+            int gt = dftrDateExp.indexOf(tgl); // mendapatkan index dari data yang telah ada
+            dftrStatus.set(gt, "expired"); // mereplace data format(index, value_baru_yang_dirubah)
+        }
+    }
 }
