@@ -23,7 +23,7 @@ public class Daging implements InterfaceDaging {
     public Daging(){
         dftrKode.add("DG-1");
         dftrJenis.add("Tenderloin");
-        dftrPemasok.add("PM01");
+        dftrPemasok.add("PM-1");
         dftrHBeli.add("50000");
         dftrHJual.add("55000");
         dftrStok.add("10");
@@ -32,7 +32,7 @@ public class Daging implements InterfaceDaging {
 
         dftrKode.add("DG-2");
         dftrJenis.add("Sirloin");
-        dftrPemasok.add("PM02");
+        dftrPemasok.add("PM-2");
         dftrHBeli.add("60000");
         dftrHJual.add("70000");
         dftrStok.add("10");
@@ -125,7 +125,72 @@ public class Daging implements InterfaceDaging {
     }
 
     public void updateDaging(){
+        Scanner sc = new Scanner(System.in);
+        boolean dt = false;
+        String res;
+        showDaging();
+        while(!dt){
+            System.out.println("Masukkan Kode Daging yang Ingin diubah : ");
+            kode = sc.next();
+            if (dftrKode.contains(kode)){
+                int a = dftrKode.indexOf(kode);
 
+                System.out.println("Masukkan Nama Jenis Daging Baru : ");
+                jenis = sc.next();
+                dftrJenis.set(a,jenis);
+
+                System.out.println("Masukkan pemasok daging Baru : ");
+                pemasok = sc.next();
+                dftrPemasok.set(a,pemasok);
+
+                System.out.println("Masukkan harga beli Daging Baru : ");
+                harga_beli = sc.nextInt();
+                dftrHBeli.set(a,String.valueOf(harga_beli));
+
+                System.out.println("Masukkan harga jual Daging Baru : ");
+                harga_jual = sc.nextInt();
+                dftrHBeli.set(a,String.valueOf(harga_jual));
+
+                System.out.println("Masukkan stok Daging Baru : ");
+                stok = sc.nextInt();
+                dftrHBeli.set(a,String.valueOf(stok));
+            }
+            System.out.print("Apakah ingin mengubah data lagi? y/n ");
+            res = sc.next();
+            if (res.equals("y")){
+                dt = false;
+            }else {
+                dt = true;
+                showDaging();
+            }
+        }
+    }
+
+    public void cariData(String kode){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Masukkan Kode daging yang ingin dicari : ");
+        kode = sc.next();
+        if (dftrKode.contains(kode)){
+            int a = dftrKode.indexOf(kode);
+            System.out.println(dftrJenis.get(a));
+            System.out.println(dftrPemasok.get(a));
+            System.out.println(dftrHBeli.get(a));
+            System.out.println(dftrHJual.get(a));
+            System.out.println(dftrStok.get(a));
+        }
+    }
+    public void cariData(int harga_beli){
+        Scanner sn = new Scanner(System.in);
+        System.out.println("Masukkan harga beli daging yang ingin dicari : ");
+        kode = sn.next();
+        if (dftrKode.contains(kode)){
+            int a = dftrKode.indexOf(kode);
+            System.out.println(dftrJenis.get(a));
+            System.out.println(dftrPemasok.get(a));
+            System.out.println(dftrHBeli.get(a));
+            System.out.println(dftrHJual.get(a));
+            System.out.println(dftrStok.get(a));
+        }
     }
 
     public String get_tgl(int th, int bl, int tgl){
