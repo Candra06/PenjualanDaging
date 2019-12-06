@@ -7,7 +7,7 @@ public class Pemasok extends Person {
     ArrayList<String> dftrNo_hp = new ArrayList<String>();
     ArrayList<String> dftrAlamat = new ArrayList<String>();
 
-    protected String Kode;
+    protected String kode, alamat;
 
     public Pemasok(String nama, String no_hp) {
         super(nama, no_hp);
@@ -36,8 +36,8 @@ public class Pemasok extends Person {
             setNo_hp(sc.nextLine());
             dftrNo_hp.add(getNo_hp());
             System.out.println("Masukkan Alamat : ");
-            Alamat = sc.nextLine();
-            dftrAlamat.add(this.Alamat);
+            alamat = sc.nextLine();
+            dftrAlamat.add(this.alamat);
             System.out.print("Apakah ingin input lagi? y/n ");
             res = sc.next();
             if (res.equals("y")){
