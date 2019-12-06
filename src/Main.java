@@ -44,6 +44,9 @@ public class Main {
                 break;
             case 2:
                 // Tambah pemasok
+                Pemasok pemasok = new Pemasok();
+                pemasok.addPemasok();
+                break;
             case 3:
                 // Transaksi beli
                 break;

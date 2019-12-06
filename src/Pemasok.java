@@ -35,6 +35,9 @@ public class Pemasok extends Person {
             System.out.print("Masukkan No HP : ");
             setNo_hp(sc.nextLine());
             dftrNo_hp.add(getNo_hp());
+            System.out.println("Masukkan Alamat : ");
+            Alamat = sc.nextLine();
+            dftrAlamat.add(this.Alamat);
             System.out.print("Apakah ingin input lagi? y/n ");
             res = sc.next();
             if (res.equals("y")){
