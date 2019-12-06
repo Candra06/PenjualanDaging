@@ -15,6 +15,11 @@ public class Pemasok extends Person {
         dftrNama.add("Rizal");
         dftrNo_hp.add("085237689012");
         dftrAlamat.add("Jalan Karimata No.15");
+
+        dftrKode.add("PM-2");
+        dftrNama.add("Choirul Huda");
+        dftrNo_hp.add("085238867779");
+        dftrAlamat.add("Jln. Jawa mania");
     }
 
     public void addPemasok(){
@@ -39,6 +44,27 @@ public class Pemasok extends Person {
             Alamat = sc.nextLine();
             dftrAlamat.add(this.Alamat);
             System.out.print("Apakah ingin input lagi? y/n ");
+            res = sc.next();
+            if (res.equals("y")){
+                dt = false;
+            }else {
+                dt = true;
+                showData();
+            }
+        }
+    }
+
+    public void removePemasok(){
+        Scanner sc = new Scanner(System.in);
+        boolean dt = false;
+        String res;
+        showData();
+        while(!dt){
+            System.out.println("Masukkan Kode Pemasok yang ingin dihapus : ");
+            kode = sc.next();
+            boolean data = dftrKode.contains(kode);
+            dftrKode.remove(kode);
+            System.out.print("Apakah ingin menghapus data lagi? y/n ");
             res = sc.next();
             if (res.equals("y")){
                 dt = false;

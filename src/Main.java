@@ -61,6 +61,10 @@ public class Main {
             case 6:
                 //exit
                 break;
+            case 7:
+                Pemasok pms = new Pemasok("","");
+                pms.removePemasok();
+                break;
             default:
                 System.out.println("Menu tidak ditemukan");
                 break;
