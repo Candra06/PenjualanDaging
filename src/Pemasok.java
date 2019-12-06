@@ -7,7 +7,7 @@ public class Pemasok extends Person {
     ArrayList<String> dftrNo_hp = new ArrayList<String>();
     ArrayList<String> dftrAlamat = new ArrayList<String>();
 
-    protected String Kode;
+    protected String Kode, Alamat;
 
     public Pemasok(String nama, String no_hp) {
         super(nama, no_hp);
