@@ -124,6 +124,10 @@ public class Daging implements InterfaceDaging {
         }
     }
 
+    public void updateDaging(){
+
+    }
+
     public String get_tgl(int th, int bl, int tgl){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = new GregorianCalendar(th,bl,tgl,13,24,56);
