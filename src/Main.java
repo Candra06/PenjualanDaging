@@ -48,7 +48,8 @@ public class Main {
                 pemasok.addPemasok();
                 break;
             case 3:
-                // Transaksi beli
+                Pembelian pembelian = new Pembelian("","","");
+                pembelian.inputTransaksi();
                 break;
             case 4:
                 //transaksi jual
