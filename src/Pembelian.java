@@ -1,4 +1,3 @@
-import jdk.dynalink.support.ChainedCallSite;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ public class Pembelian extends Transaksi {
             setTanggal(tgl);
             System.out.println("Tanggal pembelian : " + getTanggal());
             System.out.print("Masukkan kode daging : ");
-            setKode_daging(sc.nextLine());
+            setKode_daging(sc.next());
             System.out.print("Masukkan kode petugas : ");
             setPetugas(sc.next());
             System.out.print("Masukkan jumlah pembelian : ");

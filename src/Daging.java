@@ -13,7 +13,7 @@ public class Daging implements InterfaceDaging {
     ArrayList<String> dftrStatus = new ArrayList<String>();
 
 
-    Locale locale = new Locale("fr", "FR");
+    Locale locale = new Locale("idn", "IDN");
     DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
     String date = dateFormat.format(new Date());
 
@@ -44,6 +44,8 @@ public class Daging implements InterfaceDaging {
         Scanner in = new Scanner(System.in);
         boolean dt = false;
         String res;
+        System.out.println("Ini tanggal "+date);
+        System.out.println("Ini locale "+locale);
         System.out.println("========== Input Data Daging ==========");
         while (!dt){
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -167,29 +169,30 @@ public class Daging implements InterfaceDaging {
     }
 
     public void cariData(String kode){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Masukkan Kode daging yang ingin dicari : ");
-        kode = sc.next();
         if (dftrKode.contains(kode)){
+            System.out.println("Pencarian berdasarkan kode ditemukan!");
             int a = dftrKode.indexOf(kode);
             System.out.println(dftrJenis.get(a));
             System.out.println(dftrPemasok.get(a));
             System.out.println(dftrHBeli.get(a));
             System.out.println(dftrHJual.get(a));
             System.out.println(dftrStok.get(a));
+        }else {
+            System.out.println("Pencarian berdasarkan kode tidak ditemukan!");
         }
     }
-    public void cariData(int harga_beli){
-        Scanner sn = new Scanner(System.in);
-        System.out.println("Masukkan harga beli daging yang ingin dicari : ");
-        kode = sn.next();
-        if (dftrKode.contains(kode)){
+
+    public void cariData(String kode, String nama){
+        if (dftrKode.contains(kode) && dftrJenis.contains(nama)){
+            System.out.println("Pencarian berdasarkan kode dan jenis ditemukan!");
             int a = dftrKode.indexOf(kode);
             System.out.println(dftrJenis.get(a));
             System.out.println(dftrPemasok.get(a));
             System.out.println(dftrHBeli.get(a));
             System.out.println(dftrHJual.get(a));
             System.out.println(dftrStok.get(a));
+        }else {
+            System.out.println("Pencarian berdasarkan kode dan jenis tidak ditemukan!");
         }
     }
 

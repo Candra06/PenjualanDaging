@@ -8,20 +8,30 @@ public class Main {
 
     public static void Login(){
         User objUser = new User("","");
-        for (int i=0; i<objUser.dftrUsername.size();i++){
 
-        }
         String u="admin", p="admin", user="", pass="";
+        int ps;
         boolean bool = true;
-        while (!user.equals(u) && !pass.equals(p)){
+        while (bool){
             Scanner scan = new Scanner(System.in);
             System.out.println("==========LOGIN==========");
             System.out.print("Masukkan username : ");
             user = scan.next();
+            objUser.dftrUsername.contains(user);
             System.out.print("Masukkan password : ");
             pass = scan.next();
+            ps = objUser.dftrUsername.indexOf(user);
+            if (objUser.dftrPassword.get(ps).equals(pass) && objUser.dftrUsername.contains(user) == true){
+                bool = true;
+                System.out.println("Login berhasil");
+                Menu();
+            }else {
+                bool = true;
+                System.out.println("Login gagal");
+            }
+
         }
-        Menu();
+
     }
 
     public static void Menu(){
@@ -176,16 +186,25 @@ public class Main {
                 break;
             case 5:
                 //Cari Data Daging
-                String key;
-                int harga = 0;
-                System.out.println("Masukkan Keyword(kode/harga jual daging)");
-                key = sc.next();
-                if (key.equals(sc.next())){
+                String key, key1, Nama;
+                System.out.print("Masukkan Keyword(kode/kode dan nama) : ");
+                Nama = sc.next();
+                String str = Nama;
+                String[] value = str.split(",");
+                int val = value.length;
+                if (val>1){
+                    key = value[0];
+                    key1 = value[1];
+                }else {
+                    key = value[0];
+                    key1 = "";
+                }
+
+                if (key1.equals("")){
                     daging.cariData(key);
                 }else {
-                    daging.cariData(harga);
+                    daging.cariData(key, key1);
                 }
-                
                 break;
             case 6:
                 //Kembali ke menu utama

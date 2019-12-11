@@ -24,6 +24,7 @@ public class Penjualan extends Transaksi{
     public void inputTransaksi() {
         Scanner sc = new Scanner(System.in);
         boolean st = false;
+        String kodeDG = "";
         String res;
         while (!st) {
             if (listKodeJual.size() == 0) {
@@ -34,34 +35,43 @@ public class Penjualan extends Transaksi{
                 int get = Integer.parseInt(getLast[1]) + 1;
                 kode = "TJ-" + get;
             }
-
-
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
             String tgl = format.format(date);
+
+            Daging daging = new Daging();
 
             System.out.println("Kode Penjualan : " + kode);
             setTanggal(tgl);
             System.out.println("Tanggal penjualan : " + getTanggal());
             System.out.print("Masukkan kode daging : ");
-            setKode_daging(sc.nextLine());
+            kodeDG = sc.next();
+            setKode_daging(kodeDG);
             System.out.print("Masukkan kode petugas : ");
             setPetugas(sc.next());
             System.out.print("Masukkan jumlah penjualan : ");
             jumlah = sc.nextInt();
-            System.out.println("Total harga : " + getHarga(jumlah, getKode_daging()));
-            System.out.print("Apakah ingin input lagi? y/n ");
-            res = sc.next();
-            if (res.equals("y")) {
+            System.out.println(Integer.parseInt(daging.dftrStok.get(daging.dftrKode.indexOf(getKode_daging()))));
+            if (Integer.parseInt(daging.dftrStok.get(daging.dftrKode.indexOf(getKode_daging()))) <= jumlah){
+                System.out.println("Stok tidak mencukupi!");
+                System.out.println("Masukkan data kembali!");
                 st = false;
-                addData(kode, tgl, getKode_daging(), getPetugas(), jumlah, getHarga(jumlah, getKode_daging()));
-                updateStok(jumlah, getKode_daging());
-            } else {
-                st = true;
-                addData(kode, tgl, getKode_daging(), getPetugas(), jumlah, getHarga(jumlah, getKode_daging()));
-                updateStok(jumlah, getKode_daging());
-                show_data();
+            }else {
+                System.out.println("Total harga : " + getHarga(jumlah, getKode_daging()));
+                System.out.print("Apakah ingin input lagi? y/n ");
+                res = sc.next();
+                if (res.equals("y")) {
+                    st = false;
+                    addData(kode, tgl, getKode_daging(), getPetugas(), jumlah, getHarga(jumlah, getKode_daging()));
+                    updateStok(jumlah, getKode_daging());
+                } else {
+                    st = true;
+                    addData(kode, tgl, getKode_daging(), getPetugas(), jumlah, getHarga(jumlah, getKode_daging()));
+                    updateStok(jumlah, getKode_daging());
+                    show_data();
+                }
             }
+
         }
     }
 
@@ -112,4 +122,5 @@ public class Penjualan extends Transaksi{
             System.out.println("------------------------------");
         }
     }
+
 }
