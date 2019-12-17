@@ -1,10 +1,7 @@
-public class Person {
+public abstract class Person {
     protected String nama, no_hp;
 
-    public Person(String nama, String no_hp){
-        this.nama = nama;
-        this.no_hp = no_hp;
-    }
+    abstract String GetKode();
     public String getNama() {
         return nama;
     }

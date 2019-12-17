@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-public class User extends Person {
+public class Petugas extends Person {
 
     ArrayList<String> dftrKode = new ArrayList<String>();
     ArrayList<String> dftrUsername = new ArrayList<String>();
@@ -10,8 +10,7 @@ public class User extends Person {
 
     protected String kode, user, password;
 
-    public User(String nama, String no_hp) {
-        super(nama, no_hp);
+    public Petugas() {
         dftrKode.add("US-1");
         dftrNama.add("Mad Ikhsan");
         dftrUsername.add("admin");
@@ -25,11 +24,7 @@ public class User extends Person {
         String res;
         System.out.println("========== Input Data Kasir ==========");
         while (!dt) {
-            String lstKode = dftrKode.get(dftrKode.size() - 1);
-            String[] getLst = lstKode.split("-");
-            int get = Integer.parseInt(getLst[1]) + 1;
-            kode = "US-" + get;
-            System.out.println("Kode User: " + kode);
+            System.out.println("Kode User: " + GetKode());
             dftrKode.add(kode);
             System.out.println("Masukkan nama : ");
             setNama(sc.nextLine()); // memberi nilai pada atribut di super class
@@ -99,7 +94,7 @@ public class User extends Person {
                 int a = dftrKode.indexOf(kode);
 
                 System.out.println("Masukkan Nama User Baru : ");
-                setNama(sc.nextLine()); // memberi nilai pada atribut di super class
+                setNama(sc.next()); // memberi nilai pada atribut di super class
                 dftrNama.set(a, getNama());
 
                 System.out.println("Masukkan No. HP User Baru : ");
@@ -123,5 +118,14 @@ public class User extends Person {
                 showData();
             }
         }
+    }
+
+    @Override
+    String GetKode() {
+        String lstKode = dftrKode.get(dftrKode.size() - 1);
+        String[] getLst = lstKode.split("-");
+        int get = Integer.parseInt(getLst[1]) + 1;
+        kode = "US-" + get;
+        return kode;
     }
 }

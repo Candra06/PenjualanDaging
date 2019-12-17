@@ -9,8 +9,7 @@ public class Pemasok extends Person {
 
     protected String kode, Alamat;
 
-    public Pemasok(String nama, String no_hp) {
-        super(nama, no_hp);
+    public Pemasok() {
         dftrKode.add("PM-1");
         dftrNama.add("Rizal");
         dftrNo_hp.add("085237689012");
@@ -28,11 +27,7 @@ public class Pemasok extends Person {
         String res;
         System.out.println("========== Input Data Pemasok ==========");
         while (!dt){
-            String lstKode = dftrKode.get(dftrKode.size() - 1);
-            String[] getLst = lstKode.split("-");
-            int get = Integer.parseInt(getLst[1]) + 1;
-            kode = "PM-"+get;
-            System.out.println("Kode User: "+kode);
+            System.out.println("Kode User: "+GetKode());
             dftrKode.add(kode);
             System.out.print("Masukkan Nama : ");
             setNama(sc.nextLine());
@@ -85,5 +80,14 @@ public class Pemasok extends Person {
             System.out.println("Alamat : "+dftrAlamat.get(i));
             System.out.println("----------------------------------------");
         }
+    }
+
+    @Override
+    String GetKode() {
+        String lstKode = dftrKode.get(dftrKode.size() - 1);
+        String[] getLst = lstKode.split("-");
+        int get = Integer.parseInt(getLst[1]) + 1;
+        kode = "PM-"+get;
+        return kode;
     }
 }

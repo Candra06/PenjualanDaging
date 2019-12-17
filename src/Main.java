@@ -1,3 +1,5 @@
+import java.io.Console;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -7,7 +9,7 @@ public class Main {
     }
 
     public static void Login(){
-        User objUser = new User("","");
+        Petugas objPetugas = new Petugas();
 
         String u="admin", p="admin", user="", pass="";
         int ps;
@@ -17,11 +19,11 @@ public class Main {
             System.out.println("==========LOGIN==========");
             System.out.print("Masukkan username : ");
             user = scan.next();
-            objUser.dftrUsername.contains(user);
+            objPetugas.dftrUsername.contains(user);
             System.out.print("Masukkan password : ");
             pass = scan.next();
-            ps = objUser.dftrUsername.indexOf(user);
-            if (objUser.dftrPassword.get(ps).equals(pass) && objUser.dftrUsername.contains(user) == true){
+            ps = objPetugas.dftrUsername.indexOf(user);
+            if (objPetugas.dftrPassword.get(ps).equals(pass) && objPetugas.dftrUsername.contains(user) == true){
                 bool = true;
                 System.out.println("Login berhasil");
                 Menu();
@@ -88,23 +90,23 @@ public class Main {
         System.out.println("5. Menu Utama");
         System.out.print("Pilih nomor menu: ");
         menu = sc.nextInt();
-        User user = new User("", "");
+        Petugas petugas = new Petugas();
         switch (menu){
             case 1:
                 //show data
-                user.showData();
+                petugas.showData();
                 break;
             case 2:
                 //Tambah Data User
-                user.addUser();
+                petugas.addUser();
                 break;
             case 3:
                 //Edit Data User
-                user.updateUser();
+                petugas.updateUser();
                 break;
             case 4:
                 //Hapus Data User
-                user.removeUser();
+                petugas.removeUser();
                 break;
             case 5:
                 //Kembali ke menu utama
@@ -128,7 +130,7 @@ public class Main {
         System.out.println("4. Menu Utama");
         System.out.print("Pilih nomor menu: ");
         menu = sc.nextInt();
-        Pemasok pemasok = new Pemasok("", "");
+        Pemasok pemasok = new Pemasok();
         switch (menu){
             case 1:
                 //show data
@@ -215,6 +217,5 @@ public class Main {
                 break;
         }
     }
-
 
 }
