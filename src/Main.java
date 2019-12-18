@@ -1,5 +1,4 @@
-import java.io.Console;
-import java.util.Arrays;
+//import java.io.Console;
 import java.util.Scanner;
 
 public class Main {
@@ -12,10 +11,12 @@ public class Main {
         Petugas objPetugas = new Petugas();
 
         String u="admin", p="admin", user="", pass="";
+//        Console cnsl = null;
         int ps;
         boolean bool = true;
         while (bool){
             Scanner scan = new Scanner(System.in);
+
             System.out.println("==========LOGIN==========");
             System.out.print("Masukkan username : ");
             user = scan.next();
@@ -23,6 +24,7 @@ public class Main {
             System.out.print("Masukkan password : ");
             pass = scan.next();
             ps = objPetugas.dftrUsername.indexOf(user);
+            System.out.println(objPetugas.dftrPassword.get(ps));
             if (objPetugas.dftrPassword.get(ps).equals(pass) && objPetugas.dftrUsername.contains(user) == true){
                 bool = true;
                 System.out.println("Login berhasil");

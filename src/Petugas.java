@@ -79,6 +79,8 @@ public class Petugas extends Person {
             System.out.println("Username : " + dftrUsername.get(i));
             System.out.println("----------------------------------------");
         }
+        Main objMain = new Main();
+        objMain.Menu();
     }
 
 

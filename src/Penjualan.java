@@ -121,6 +121,9 @@ public class Penjualan extends Transaksi{
             System.out.println("Stok saat ini : " + daging.dftrStok.set(id, String.valueOf(hasil)));
             System.out.println("------------------------------");
         }
+        Main objMain = new Main();
+        objMain.Menu();
     }
+
 
 }

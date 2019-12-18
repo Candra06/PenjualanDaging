@@ -80,6 +80,8 @@ public class Pemasok extends Person {
             System.out.println("Alamat : "+dftrAlamat.get(i));
             System.out.println("----------------------------------------");
         }
+        Main objMain = new Main();
+        objMain.Menu();
     }
 
     @Override

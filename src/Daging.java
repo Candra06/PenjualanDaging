@@ -103,6 +103,8 @@ public class Daging implements InterfaceDaging {
             System.out.println("Status "+dftrStatus.get(i));
             System.out.println("------------------------------");
         }
+        Main objMain = new Main();
+        objMain.Menu();
     }
 
     public void removeDaging(){
@@ -166,6 +168,8 @@ public class Daging implements InterfaceDaging {
                 showDaging();
             }
         }
+        Main objMain = new Main();
+        objMain.Menu();
     }
 
     public void cariData(String kode){
@@ -194,6 +198,8 @@ public class Daging implements InterfaceDaging {
         }else {
             System.out.println("Pencarian berdasarkan kode dan jenis tidak ditemukan!");
         }
+        Main objMain = new Main();
+        objMain.Menu();
     }
 
     public String get_tgl(int th, int bl, int tgl){
