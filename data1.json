@@ -1,0 +1,16 @@
+[{
+        "Nama": "Sawi",
+        "Harga": "5000",
+        "Foto": "img/Sayur-Sawi.jpg"
+    },
+    {
+        "Nama": "Wortel",
+        "Harga": "5000",
+        "Foto": "img/Sayur-Wortel.jpg"
+    },
+    {
+        "Nama": "Pare",
+        "Harga": "6000",
+        "Foto": "img/Sayur-Pare.jpg"
+    }
+]
